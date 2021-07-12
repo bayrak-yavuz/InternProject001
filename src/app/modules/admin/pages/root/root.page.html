@@ -1,0 +1,17 @@
+
+<admin-header></admin-header>
+<nav [ngClass]="{'menuHidden': menuHidden}">
+    <admin-navigation></admin-navigation>
+</nav>
+<div class="navControl" [ngClass]="{'menuHidden': menuHidden}" (click)="menuToggle()">
+    <i class="fas fa-bars"></i>
+</div>
+<section [ngClass]="{'menuHidden': menuHidden}" class="container-fluid">
+    <admin-breadcrumb></admin-breadcrumb>
+    <router-outlet></router-outlet>
+</section>
+<admin-footer></admin-footer>
+
+<!-- <script src="https://cdn.tiny.cloud/1/zb455it4vxj91zo1lmffpnt62wyej9e7t8rft4arrq6h6tja/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>

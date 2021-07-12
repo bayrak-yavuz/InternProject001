@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+
+html,body{height: 100%}
+body{margin:0;font-family:Roboto,"Helvetica Neue",sans-serif}
+*:focus{outline:none}
+a{color:unset; text-decoration:unset; &:hover{color: unset;text-decoration: unset;} &:visited{color: unset;text-decoration: unset;} }
+
+:root {
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  --danger-lightest-color: rgb(252,85,101);
+  --danger-lighter-color: rgb(236,69,85);
+  --danger-normal-color: rgb(220,53,69);
+  --danger-darker-color:  rgba(204,37,53);
+  --danger-darkest-color: rgb(188,21,37);
+  --dark-lightest-color: rgb(84,90,96);
+  --dark-lighter-color: rgb(68,74,80);
+  --dark-normal-color: rgb(52,58,64);
+  --dark-darker-color: rgb(36,42,48);
+  --dark-darkest-color: rgb(20,26,32);
+  --info-lightest-color: rgb(55,194,216);
+  --info-lighter-color: rgb(39,178,200);
+  --info-normal-color: rgb(23,162,184);
+  --info-darker-color: rgb(7,146,168);
+  --info-darkest-color: rgb(0,130,152);
+  --light-lightest-color: rgb(255,255,255);
+  --light-lighter-color: rgb(251,252,252);
+  --light-normal-color: rgb(248,249,250);
+  --light-darker-color: rgb(232,233,234);
+  --light-darkest-color: rgb(216,217,218);
+  --primary-lightest-color: rgb(67,108,154);
+  --primary-lighter-color: rgb(51,92,138);
+  --primary-normal-color: rgb(35,76,122);
+  --primary-darker-color: rgb(19,60,106);
+  --primary-darkest-color: rgb(3,44,90);
+  --secondary-lightest-color: rgb(63,189,127);
+  --secondary-lighter-color: rgb(47,173,101);
+  --secondary-normal-color: rgb(31,157,85);
+  --secondary-darker-color: rgb(15,141,69);
+  --secondary-darkest-color: rgb(0,125,53);
+  --success-lightest-color: rgb(63,189,117);
+  --success-lighter-color: rgb(47,173,101);
+  --success-normal-color: rgb(31,157,85);
+  --success-darker-color: rgb(15,141,69);
+  --success-darkest-color: rgb(0,125,53);
+  --warning-lightest-color: rgb(255,255,30);
+  --warning-lighter-color: rgb(255,209,23);
+  --warning-normal-color: rgb(255,193,7);
+  --warning-darker-color: rgb(239,177,3);
+  --warning-darkest-color: rgb(223,161,0);
+
+}
+

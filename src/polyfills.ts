@@ -61,3 +61,16 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+//  AngularFire PolyFills
+import 'globalthis';
+import 'globalthis/auto';
+import 'globalthis/polyfill';
+import 'core-js';
+import 'core-js/stable';
+import 'proxy-polyfill';
+import 'proxy-polyfill/proxy.min';
+import 'cross-fetch';
+import 'cross-fetch/polyfill';
+
+(window as any)['global'] = window;

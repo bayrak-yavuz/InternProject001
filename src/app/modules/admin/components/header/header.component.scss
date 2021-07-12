@@ -1,0 +1,39 @@
+header{
+  height: 80px;
+  position:fixed;
+  color: rgba(var(--light-darkest-color),1);
+  background-color: rgba(var(--dark-darkest-color),1);
+  box-shadow: 0 0 3px black;
+  .row{
+      .logo{
+          line-height: 80px;
+          cursor: pointer;
+      }
+      .rightMenu{
+          text-align: right;
+          .buttonArea{
+              width:64px;
+              height:100%;
+              line-height:80px;
+              text-align:center;
+              display:inline-block;
+              img{
+                  width:28px;
+                  height:28px;
+                  cursor: pointer;
+                  border-radius:14px;
+                  display:inline-block;
+                  background-color:#595b5e;
+                  &:hover{background-color:white}
+              }
+              i{
+                  font-size:28px;
+                  cursor:pointer;
+                  display:inline-block;
+                  vertical-align:middle;
+                  &:hover{color:white}
+              }
+          }
+      }
+  }
+}
