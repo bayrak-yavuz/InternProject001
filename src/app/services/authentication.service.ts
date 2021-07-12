@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FirebaseApp } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginInformation } from '../models/login-information.model';
-
+import firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,8 @@ export class AuthenticationService {
   }
 
   async loginViaGoogle(){
-    // TODO: Google ile giriş.
-    // Not: Fonksiyon asenkron olmalı
+    this.angFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
+    // TODO: Google ile giriş.
+    // Not: Fonksiyon asenkron olmalı  
 }
