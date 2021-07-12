@@ -1,23 +1,41 @@
 import { Injectable } from '@angular/core';
+import { FirebaseApp } from '@angular/fire';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { LoginInformation } from '../models/login-information.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor() { }
+  constructor(
 
-  loginViaEmailAndPassword(){
+    private angFireAuth: AngularFireAuth,
+
+  ) { }
+
+   async loginViaEmailAndPassword(loginInfo: LoginInformation){
+
+    await this.angFireAuth.signInWithEmailAndPassword(loginInfo.email, loginInfo.password)
+    .then(value => {
+
+      console.log('Başarılı!');
+      
+    })
+    .catch(err => {
+      console.log('Bir şeyler ters gitti: ', err.message);
+    });
     // TODO: Email ve parola ile Giriş bu fonksiyon ile gerçekleştirilecek.
     // Not: Fonksiyon asenkron olmalı
   }
 
-  registerViaEmailAndPassword(){
+  async registerViaEmailAndPassword(){
     // TODO: Email ve parola ile kullanıcı kaydı.
     // Not: Fonksiyon asenkron olmalı
   }
 
-  loginViaGoogle(){
+  async loginViaGoogle(){
     // TODO: Google ile giriş.
     // Not: Fonksiyon asenkron olmalı
   }
