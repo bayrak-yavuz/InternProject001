@@ -8,10 +8,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 
 
 @NgModule({
-  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent],
+  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent],
   imports: [
     CommonModule,
     AdminRoutingModule
