@@ -1,15 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { LoginInformation } from 'src/app/models/login-information.model';
+
+export interface User{User: string};
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminDataTransferService {
 
+
+export class AdminDataTransferService {
+  
   constructor(
 
-    private angFireLogout: AngularFireAuth
+    private angFireLogout: AngularFireAuth,
+    private afs: AngularFirestore,
+    
+    
   ) { }
+
+    asd(uid:string, data: LoginInformation){
+      this.afs.doc('applications/internProject001/users/'+uid).set(data).then(res=>{})
+    }
 
   logout(){
     this.angFireLogout.signOut();
@@ -17,3 +31,4 @@ export class AdminDataTransferService {
   }
 
 }
+
