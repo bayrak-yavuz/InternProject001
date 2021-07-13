@@ -6,69 +6,60 @@ import firebase from 'firebase';
 import { EmailValidator } from '@angular/forms';
 import { RegisterInformation } from '../models/register-information.model';
 import { AdminDataTransferService } from '../modules/admin/services/admin-data-transfer.service';
+import { CustomError } from '../models/custom-error.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(
-    private loginInfCons: AdminDataTransferService,
+  constructor( private adminDataTransferService: AdminDataTransferService, private angularFireAuth: AngularFireAuth ) { }
 
-    private angFireAuth: AngularFireAuth,
+   async loginViaEmailAndPassword(loginInfo: LoginInformation): Promise< any | CustomError | undefined > {
+    let customError: CustomError = new CustomError('', '');
 
-  ) { }
-
-   async loginViaEmailAndPassword(loginInfo: LoginInformation){
-    let cErr:any
-    if(!loginInfo.email){
-      console.log('E posta alanı boş bırakılamaz:')
-      return cErr
+    if (!loginInfo.email){
+      customError.code = 'auth/email-empty';
+      customError.message = 'E posta alanı boş bırakılamaz';
+      console.error('ERROR', customError);
+      return customError;
     }
     if (!loginInfo.password) {
-      console.log('Şifre alanı boş bırakılamaz:')
-      return cErr
-    } 
- 
+      customError.code = 'auth/password-empty';
+      customError.message = 'Şifre alanı boş bırakılamaz.';
+      console.error('ERROR', customError);
+      return customError;
+    }
 
-    await this.angFireAuth.signInWithEmailAndPassword(loginInfo.email, loginInfo.password)
-    .then(value => {
-
-      console.log('Başarılı!');
-      
-    })
-    .catch(err => {
-      let cErr:any
-      console.log('Bir şeyler ters gitti: ', cErr.message);
-      if (err.code == 'auth/user-not-found'){
-        cErr.code = err.code
-        cErr.message = "Kullanıcı bulunamadı... "
-      }  
-      
-      console.log('E-mail adresi yanlış, tekrar deneyiniz: ', err.email);
-      if(err.code == 'auth/invalid-email'){
-        cErr.code = err.code
-        cErr.message = "Posta adresi hatalı biçimlendirilmiş "
+    await this.angularFireAuth.signInWithEmailAndPassword(loginInfo.email, loginInfo.password)
+    .then(value => { console.log('Başarılı!', value); })
+    .catch((err: CustomError) => {
+      if (err.code === 'auth/user-not-found'){
+        err.message = 'Kullanıcı bulunamadı...';
+        customError = err;
       }
-      console.log('Şifrenizi yanlış girdiniz, tekrar deneyiniz: ', err.password);  
-      if(err.code == 'auth/wrong-password'){
-        cErr.code = err.code
-        cErr.message = "Böyle bir şifre bulunamamaktadır. "
+      else if (err.code === 'auth/invalid-email'){
+        err.message = 'Posta adresi hatalı biçimlendirilmiş.';
+        customError = err;
+      }
+      else if (err.code === 'auth/wrong-password'){
+        err.message = 'Böyle bir şifre bulunamamaktadır.';
+        customError = err;
       }
 
+      return customError;
     });
-
   }
 
-  async registerViaEmailAndPassword(registerInf: RegisterInformation){
-    await this.angFireAuth.createUserWithEmailAndPassword(registerInf.email, registerInf.password)
+  async registerViaEmailAndPassword(registerInf: RegisterInformation): Promise<void> {
+    await this.angularFireAuth.createUserWithEmailAndPassword(registerInf.email, registerInf.password)
     .then(res => {
-      this.loginInfCons.asd(registerInf, res.user?.uid)
+      this.adminDataTransferService.asd(registerInf, res.user?.uid);
+    });
+  }
 
-  })}
-
-  async loginViaGoogle(){
-    this.angFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  async loginViaGoogle(): Promise<void> {
+    await this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
 }
