@@ -3,6 +3,7 @@ import { FirebaseApp } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginInformation } from '../models/login-information.model';
 import firebase from 'firebase';
+import { EmailValidator } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,16 @@ export class AuthenticationService {
 
    async loginViaEmailAndPassword(loginInfo: LoginInformation){
 
+    if(!loginInfo.email){
+      console.log('E posta alanı boş bırakılamaz:')
+      return ""
+    }
+    if (!loginInfo.password) {
+      console.log('Şifre alanı boş bırakılamaz:')
+      return ""
+    } 
+ 
+
     await this.angFireAuth.signInWithEmailAndPassword(loginInfo.email, loginInfo.password)
     .then(value => {
 
@@ -24,20 +35,32 @@ export class AuthenticationService {
       
     })
     .catch(err => {
-      console.log('Bir şeyler ters gitti: ', err.message);
+      console.log('Bir şeyler ters gitti: ', err.message);  
+
+    })
+    .catch(err => {
+      console.log('E-mail adresi yanlış, tekrar deneyiniz: ', err.email);    
+        
+    })
+    .catch(err => {
+      console.log('Şifrenizi yanlış girdiniz, tekrar deneyiniz: ', err.password);  
+
     });
-    // TODO: Email ve parola ile Giriş bu fonksiyon ile gerçekleştirilecek.
+
+    
+
     // Not: Fonksiyon asenkron olmalı
   }
 
-  async registerViaEmailAndPassword(){
-    // TODO: Email ve parola ile kullanıcı kaydı.
-    // Not: Fonksiyon asenkron olmalı
-  }
+  async registerViaEmailAndPassword(email: string, password: string){
+    await this.angFireAuth.createUserWithEmailAndPassword(email, password)
+    .then(res => {
+      res.user?.uid
+
+  })}
 
   async loginViaGoogle(){
     this.angFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
-    // TODO: Google ile giriş.
-    // Not: Fonksiyon asenkron olmalı  
+
 }
