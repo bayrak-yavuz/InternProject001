@@ -20,14 +20,14 @@ export class AuthenticationService {
   ) { }
 
    async loginViaEmailAndPassword(loginInfo: LoginInformation){
-
+    let cErr:any
     if(!loginInfo.email){
       console.log('E posta alanı boş bırakılamaz:')
-      return ""
+      return cErr
     }
     if (!loginInfo.password) {
       console.log('Şifre alanı boş bırakılamaz:')
-      return ""
+      return cErr
     } 
  
 
@@ -38,16 +38,30 @@ export class AuthenticationService {
       
     })
     .catch(err => {
-      console.log('Bir şeyler ters gitti: ', err.message);  
+      let cErr:any
+      console.log('Bir şeyler ters gitti: ', err.message);
+      if (err.code == 'auth/user-not-found'){
+        cErr.code = err.code
+        cErr.message = "Kullanıcı bulunamadı... "
+      }  
+      else if(err.code == 'auth/invalid-email'){
+        cErr.code = err.code
+        cErr.message = "Posta adresi hatalı biçimlendirilmiş "
+      }
+      /*else if(err.code == 'auth/'){
+        cErr.code = err.code
+        cErr.message = " "
+      }*/
+      
 
     })
     .catch(err => {
       console.log('E-mail adresi yanlış, tekrar deneyiniz: ', err.email);    
-        
+     
     })
     .catch(err => {
       console.log('Şifrenizi yanlış girdiniz, tekrar deneyiniz: ', err.password);  
-
+     
     });
 
     
