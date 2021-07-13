@@ -1,1 +1,32 @@
-<p>admin-register works!</p>
+<div class="confluit">
+    <div class="container con">
+      <div class="row m-3">
+        <div class="col-12">
+          <h2>Kayıt Ol</h2>
+        </div>
+      </div>
+      <div class="row m-row">
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" [(ngModel)]="name" id="floatingName" placeholder="name@example.com">
+                <label for="floatingName">İsminiz</label>
+              </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" [(ngModel)]="email" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">E-posta Adresi</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" [(ngModel)]="password" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Şifre</label>
+          </div>
+        </div>
+      </div>
+      <div class="row m-row">        
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" (click)="register(name,email,password)">Kayıt Ol</button>
+        </div>
+      </div>
+     
+     
+    </div>
+  </div>

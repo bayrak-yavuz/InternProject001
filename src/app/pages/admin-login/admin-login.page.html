@@ -22,7 +22,10 @@
         <button class="btn btn-success" type="submit" (click)="login(email, password)">Giriş yap</button>
       </div>
       <div class="col-6">
-        <button class="btn btn-primary" type="submit">Kayıt ol</button>
+        <button class="btn btn-primary" >
+          <a href="register" target="blank">
+            Kayıt ol
+          </a></button>
       </div>
     </div>
     <div style="float:left; width: 44%;">
@@ -33,7 +36,7 @@
       <hr />
     </div>
     <div class="">
-      <button type="submit" class="btn btn-outline-primary">
+      <button type="submit" class="btn btn-outline-primary" (click)="loginGoogle()" >
         <i class="fa fa-google"></i>
         &nbsp;Google ile Giriş Yap
       </button>

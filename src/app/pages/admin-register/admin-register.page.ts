@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterInformation } from 'src/app/models/register-information.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-admin-register',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminRegisterPage implements OnInit {
 
-  constructor() { }
+  name:any;
+  email:any;
+  password:any;
+
+  constructor(private auth: AuthenticationService) { }
 
   ngOnInit(): void {
+  }
+
+  register(name:string, email:string, password: string){
+    this.auth.registerViaEmailAndPassword(new RegisterInformation(name,email,password));
   }
 
 }

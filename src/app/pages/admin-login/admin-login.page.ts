@@ -23,5 +23,8 @@ export class AdminLoginPage implements OnInit {
     this.auth.loginViaEmailAndPassword(
       new LoginInformation(email, password));
   }
+  loginGoogle(){
+    this.auth.loginViaGoogle();
+  }
 
 }
