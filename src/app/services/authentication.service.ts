@@ -39,34 +39,25 @@ export class AuthenticationService {
     })
     .catch(err => {
       let cErr:any
-      console.log('Bir şeyler ters gitti: ', err.message);
+      console.log('Bir şeyler ters gitti: ', cErr.message);
       if (err.code == 'auth/user-not-found'){
         cErr.code = err.code
         cErr.message = "Kullanıcı bulunamadı... "
       }  
-      else if(err.code == 'auth/invalid-email'){
+      
+      console.log('E-mail adresi yanlış, tekrar deneyiniz: ', err.email);
+      if(err.code == 'auth/invalid-email'){
         cErr.code = err.code
         cErr.message = "Posta adresi hatalı biçimlendirilmiş "
       }
-      /*else if(err.code == 'auth/'){
-        cErr.code = err.code
-        cErr.message = " "
-      }*/
-      
-
-    })
-    .catch(err => {
-      console.log('E-mail adresi yanlış, tekrar deneyiniz: ', err.email);    
-     
-    })
-    .catch(err => {
       console.log('Şifrenizi yanlış girdiniz, tekrar deneyiniz: ', err.password);  
-     
+      if(err.code == 'auth/wrong-password'){
+        cErr.code = err.code
+        cErr.message = "Böyle bir şifre bulunamamaktadır. "
+      }
+
     });
 
-    
-
-    // Not: Fonksiyon asenkron olmalı
   }
 
   async registerViaEmailAndPassword(registerInf: RegisterInformation){
