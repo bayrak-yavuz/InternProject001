@@ -25,8 +25,7 @@ export class AdminDataTransferService {
    async asd(data: RegisterInformation, uid?:string){
      if (uid) {
       this.afs.doc('applications/internProject001/users/'+uid).set(data).then(res=>{})
-      
-     }
+      }
     }
 
   logout(){
