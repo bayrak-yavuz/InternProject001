@@ -9,12 +9,14 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AdminRegisterPage } from './pages/admin-register/admin-register.page';
 
 @NgModule({
   declarations: [
     AdminLoginPage,
     NotFoundPage,
-    RootPage
+    RootPage,
+    AdminRegisterPage
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
