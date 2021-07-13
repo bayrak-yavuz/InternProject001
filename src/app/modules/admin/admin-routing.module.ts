@@ -8,8 +8,8 @@ import { CatogoriesPage } from './pages/catogories/catogories.page';
 const routes: Routes = [
   {path: '', component: RootPage, children: [
     {path: '', component: DashboardPage},
-    {path: '', component: PostsPage},
-    {path: '', component: CatogoriesPage}
+    {path: 'yazilar', component: PostsPage},
+    {path: 'kategoriler', component: CatogoriesPage}
   ]}
 ];
 
