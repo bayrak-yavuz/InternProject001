@@ -4,6 +4,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginInformation } from '../models/login-information.model';
 import firebase from 'firebase';
 import { EmailValidator } from '@angular/forms';
+import { RegisterInformation } from '../models/register-information.model';
+import { AdminDataTransferService } from '../modules/admin/services/admin-data-transfer.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ import { EmailValidator } from '@angular/forms';
 export class AuthenticationService {
 
   constructor(
+    private loginInfCons: AdminDataTransferService,
 
     private angFireAuth: AngularFireAuth,
 
@@ -52,10 +55,10 @@ export class AuthenticationService {
     // Not: Fonksiyon asenkron olmalı
   }
 
-  async registerViaEmailAndPassword(email: string, password: string){
-    await this.angFireAuth.createUserWithEmailAndPassword(email, password)
+  async registerViaEmailAndPassword(registerInf: RegisterInformation){
+    await this.angFireAuth.createUserWithEmailAndPassword(registerInf.email, registerInf.password)
     .then(res => {
-      res.user?.uid
+      this.loginInfCons.asd(registerInf, res.user?.uid)
 
   })}
 
