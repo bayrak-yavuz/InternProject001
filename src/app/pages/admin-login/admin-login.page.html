@@ -7,20 +7,22 @@
     </div>
     <div class="row m-row">
       <div class="col-12">
-        <input class="login" type="email" name="e-mail" id="email" placeholder="E-posta">
-      </div>
-    </div>
-    <div class="row m-row ">
-      <div class="col-12">
-        <input class="login" type="password" name="password" id="password" placeholder="Şifre">
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" [(ngModel)]="email" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" [(ngModel)]="password" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
       </div>
     </div>
     <div class="row m-row">
       <div class="col-6">
-        <button class="btnLogin" type="submit">Giriş yap</button>
+        <button class="btn btn-success" type="submit" (click)="login(email, password)">Giriş yap</button>
       </div>
       <div class="col-6">
-        <button class="btnSign" type="submit">Kayıt ol</button>
+        <button class="btn btn-primary" type="submit">Kayıt ol</button>
       </div>
     </div>
     <div style="float:left; width: 44%;">
@@ -30,9 +32,9 @@
     <div style="float:right; width: 44%;">
       <hr />
     </div>
-    <div class="btnGoogle">
-      <button type="submit">
-        <i class="fa fa-google bg-primary"></i>
+    <div class="">
+      <button type="submit" class="btn btn-outline-primary">
+        <i class="fa fa-google"></i>
         &nbsp;Google ile Giriş Yap
       </button>
     </div>

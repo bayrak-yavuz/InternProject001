@@ -5,26 +5,25 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-min-width:460px;
-
-
+  min-width:460px;
 }
+
 .con{
   box-shadow: 0 0 3px rgb(122, 120, 120);
   border-radius: 16px;
   height: calc(100% - 100px);
   max-height: 400px;
-  min-height: 400px;
+  min-height: 425px;
   max-width: 450px;
   background-color:white;
   border-radius: 10px;
   align-items: center;
-
 }
 
 .m-row {
   margin: 30px;
 }
+
 .fa-google {
   background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
   -webkit-background-clip: text;
@@ -33,45 +32,4 @@ min-width:460px;
   -webkit-text-fill-color: transparent;
   width: auto;
   font-size: 15px;
-
 }
-
-.btnGoogle button[type="submit"]{
-    border: 2px solid #214070;
-    border-radius: 5px;
-    margin-top: 10px;
-    background: linear-gradient(90deg,rgb(240, 238, 234) 14%, #2568cc 0);
-    color: antiquewhite;
-
-}
-.btnLogin{
-    width: 100px;
-    height: 45px;
-    border-radius: 10px;
-    margin-left: 38%;
-    background-color: #435d8b;
-    color: antiquewhite;
-}
-
-.btnSign{
-  width: 100px;
-  height: 45px;
-  border-radius: 10px;
-  margin-right: 40%;
-  background-color: #435d8b;
-  color: antiquewhite;
-}
-.login:focus{
-    border: 2px solid #2a68ca;
-    border-radius: 15px;
-    width: 250px;
-
-}
-.login{
-  outline: none;
-  width: 200px;
-  transition: 0.5s ease;
-  border-radius: 15px;
-  text-align: center;
-}
-
