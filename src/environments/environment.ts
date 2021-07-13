@@ -2,6 +2,8 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { APP_ID } from "@angular/core";
+
 export const environment = {
   production: false,
   firebaseConfig: {
@@ -11,9 +13,12 @@ export const environment = {
     storageBucket: 'internproject001.appspot.com',
     messagingSenderId: '946828851723',
     appId: '1:946828851723:web:2db268b19fe11deaaf250e',
+    appID: 'InternProject001',
     measurementId: 'G-FB8H5VSX9K'
   }
 };
+
+   
 
 /*
  * For easier debugging in development mode, you can import the following file
