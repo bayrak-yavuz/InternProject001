@@ -8,7 +8,6 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
-  // FIXME Menü butonu aktiflik durumu düzenlenecek menü içeriği dizi olarak alınacak
   main = false;
   kategoriler = false;
   yazilar = false;
