@@ -9,10 +9,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { PostsPage } from './pages/posts/posts.page';
-
+import { CatogoriesPage } from './pages/catogories/catogories.page';
 
 @NgModule({
-  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage],
+  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage, CatogoriesPage],
   imports: [
     CommonModule,
     AdminRoutingModule
