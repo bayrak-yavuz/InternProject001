@@ -11,9 +11,10 @@ import { SplashScreenComponent } from './components/splash-screen/splash-screen.
 import { PostsPage } from './pages/posts/posts.page';
 import { CategoriesPage } from './pages/categories/categories.page';
 import { PostEditPage } from './pages/post-edit/post-edit.page';
+import { CategoriesEditPage } from './pages/categories-edit/categories-edit.page';
 
 @NgModule({
-  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage, CategoriesPage, PostEditPage],
+  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage, CategoriesPage, PostEditPage, CategoriesEditPage],
   imports: [
     CommonModule,
     AdminRoutingModule
