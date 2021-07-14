@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'admin-breadcrumb',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadcrumbComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+    private categorySer: CategoriesService
+  ) { }
 
   ngOnInit(): void {
   }
