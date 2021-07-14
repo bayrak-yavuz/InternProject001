@@ -9,10 +9,11 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { PostsPage } from './pages/posts/posts.page';
-import { CatogoriesPage } from './pages/catogories/catogories.page';
+import { CategoriesPage } from './pages/categories/categories.page';
+import { PostEditPage } from './pages/post-edit/post-edit.page';
 
 @NgModule({
-  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage, CatogoriesPage],
+  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage, CategoriesPage, PostEditPage],
   imports: [
     CommonModule,
     AdminRoutingModule
