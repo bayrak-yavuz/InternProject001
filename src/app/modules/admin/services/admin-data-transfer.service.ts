@@ -33,5 +33,10 @@ export class AdminDataTransferService {
     // TODO: Çıkış yapmak için gerekli fonksiyon
   }
 
+  async changePassword(){
+
+    
+  }
+
 }
 

@@ -7,6 +7,7 @@ import { CategoriesPage } from './pages/categories/categories.page';
 import { PostEditPage } from './pages/post-edit/post-edit.page';
 import { CategoriesEditPage } from './pages/categories-edit/categories-edit.page';
 import { SupportPage } from './pages/support/support.page';
+import { ChangePasswordPage } from './pages/change-password/change-password.page';
 
 const routes: Routes = [
   {path: '', component: RootPage, children: [
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path: 'yazilar/:id', component: PostEditPage},
     {path: 'kategoriler', component: CategoriesPage},
     {path: 'kategoriler/:id', component: CategoriesEditPage},
-    {path: 'talepler', component:SupportPage}
+    {path: 'talepler', component:SupportPage},
+    {path: 'hesap-ayarlari', component:ChangePasswordPage}
   ]}
 ];
 
