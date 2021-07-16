@@ -18,78 +18,78 @@ export class CategoriesService {
 
   constructor(
     private afs: AngularFirestore,
-    
-  
+
+
   ) {
-    
-    
-    let yeniKategori: CategoriesInformation = {_syncDate:12346579, categoryName: "Furkan" , isListed: true , lang: "tr_TR" , url: "hizmetlerimiz"};
-    
-    let yeniKategoriUpdate: CategoriesDocument = {categoryDocumentId: 'aThI436wLrwToZuqSsnq' , categoryInformation: yeniKategori }
 
-    let yeniKategoriGetCadegory: CategoriesDocument = {categoryDocumentId: 'aThI436wLrwToZuqSsnq', categoryInformation: {}}
 
-    let yeniKategoriDelete: CategoriesDocument = {categoryDocumentId: 'OVtq6iDw1wiyBQ89nHzC' , categoryInformation: {}}
+    let yeniKategori: CategoriesInformation = { _syncDate: 12346579, categoryName: "Furkan", isListed: true, lang: "tr_TR", url: "hizmetlerimiz" };
+
+    let yeniKategoriUpdate: CategoriesDocument = { categoryDocumentId: 'aThI436wLrwToZuqSsnq', categoryInformation: yeniKategori }
+
+    let yeniKategoriGetCadegory: CategoriesDocument = { categoryDocumentId: 'aThI436wLrwToZuqSsnq', categoryInformation: {} }
+
+    let yeniKategoriDelete: CategoriesDocument = { categoryDocumentId: 'OVtq6iDw1wiyBQ89nHzC', categoryInformation: {} }
 
     let yeniKategoriGetCategories: CategoriesInformation = {}
 
-    this.createCategory(yeniKategori)
-  this.Update(yeniKategoriUpdate)
-  this.deleteCategory(yeniKategoriDelete)
-  this.getCategory(yeniKategoriGetCadegory)
-  this.getCategories()
-  
-  
-  
-  
-  
+    // this.createCategory(yeniKategori)
+    // this.Update(yeniKategoriUpdate)
+    // this.deleteCategory(yeniKategoriDelete)
+    // this.getCategory(yeniKategoriGetCadegory)
+    // this.getCategories()
+
+
+
+
+
   }
 
-   
 
 
 
 
 
 
-   async createCategory(data: CategoriesInformation){
 
-    this.afs.collection('/applications/InternProject001/categories').add(data).then(res => {console.log(res.id)})
-    
-  }
-  
-  
-  async Update(data: CategoriesDocument){
+  async createCategory(data: CategoriesInformation) {
 
-    this.afs.doc('/applications/InternProject001/categories/'+data.categoryDocumentId).update(data.categoryInformation).then(value => {console.log('Başarılı giriş', value)})
-    .catch(console.error)
+    return await this.afs.collection('/applications/InternProject001/categories').add(data).then(res => { console.log(res.id) })
 
   }
-  
-  
-  async getCategory(categoryDocument: CategoriesDocument){
 
-    this.afs.doc('/applications/InternProject001/categories/'+categoryDocument.categoryDocumentId).get().subscribe((res:any) => { categoryDocument.categoryInformation = res.data();console.log(res.data())})
+
+  async Update(data: CategoriesDocument) {
+
+    return await this.afs.doc('/applications/InternProject001/categories/' + data.categoryDocumentId).update(data.categoryInformation).then(value => { console.log('Başarılı giriş', value) })
+      .catch(console.error)
+
   }
-  
-  
-  async getCategories(){
-    let array : any[] = [];
-  this.afs.collection('/applications/InternProject001/categories').get().subscribe(res => {
-    res.docs.forEach(doc => {
-      array.push(doc.data());
-      console.log(doc.data())
+
+
+  async getCategory(categoryDocument: CategoriesDocument) {
+
+    return await this.afs.doc('/applications/InternProject001/categories/' + categoryDocument.categoryDocumentId).get().subscribe((res: any) => { categoryDocument.categoryInformation = res.data(); console.log(res.data()) })
+  }
+
+
+  async getCategories() {
+    let array: any[] = [];
+    return await this.afs.collection('/applications/InternProject001/categories').get().subscribe(res => {
+      res.docs.forEach(doc => {
+        array.push(doc.data());
+        console.log(doc.data())
+      })
+
     })
-  console.log(array[1])
-  })
-  
-  return array;
-   
+
+    return array;
+
   }
 
-  async deleteCategory(categoryDocumentID:CategoriesDocument){
+  async deleteCategory(categoryDocumentID: CategoriesDocument) {
 
-    this.afs.doc('/applications/InternProject001/categories/'+categoryDocumentID.categoryDocumentId).delete().then(res => {console.log('Kategori silindi.')})
+    return await this.afs.doc('/applications/InternProject001/categories/' + categoryDocumentID.categoryDocumentId).delete().then(res => { console.log('Kategori silindi.') })
   }
 }
 
