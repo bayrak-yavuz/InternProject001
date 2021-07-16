@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'admin-change-password',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChangePasswordPage implements OnInit {
 
-  constructor() { }
+  password: any;
+  passwordAgain: any;
+  email: any;
+
+  constructor(
+    private angAuth: AngularFireAuth
+  ) { }
 
   ngOnInit(): void {
   }
-
+passwordCheck(password: string , passwordAgain: string){
+  if(this.password != this.passwordAgain){
+    console.log('Hatalı deneme!');
+  }
+  else{
+    console.log('Sıkıntı yok')
+    this.angAuth.sendPasswordResetEmail(this.email).then(res => console.log('email yollandı'))
+  }
+}
 }

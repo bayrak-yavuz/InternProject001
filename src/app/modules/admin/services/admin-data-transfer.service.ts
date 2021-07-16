@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { user } from 'firebase-functions/lib/providers/auth';
 import { Observable } from 'rxjs';
 import { LoginInformation } from 'src/app/models/login-information.model';
 import { RegisterInformation } from 'src/app/models/register-information.model';
+
 
 export interface User{User: string};
 
