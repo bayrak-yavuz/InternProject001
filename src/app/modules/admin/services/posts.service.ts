@@ -27,43 +27,35 @@ export class PostsService {
   //this.deletePosts(yeniGonderiDelete)
   //this.createPosts(yeniGonderi)
   //this.getPost(yeniGonderiGetPost)
-  this.getPosts()
+  //this.getPosts()
 
   }
 
   async createPosts(data : PostsInformation){
-    this.afs.collection('/applications/'+environment.appID+'/posts/').add(data).then(res =>{console.log(res.id)})
+    return await this.afs.collection('/applications/'+environment.appID+'/posts/').add(data)
     //yeni post oluştur 
   }
 
   async updatePosts(data : PostsDocument){
-    this.afs.doc('/applications/'+environment.appID+'/posts/'+data.postDocumentId).update(data.postInformation).then(value => {console.log('Başarı ile güncellendi.')})
+   return await this.afs.doc('/applications/'+environment.appID+'/posts/'+data.postDocumentId).update(data.postInformation)
     .catch(console.error)
     //güncelle
     
   }
   async getPost(postDocumentId: PostsDocument){
     
-    await this.afs.doc('/applications/'+environment.appID+'/posts/'+postDocumentId.postDocumentId).get().subscribe( res => {      
-      console.log(res.data())
-    })
+    return await this.afs.doc('/applications/'+environment.appID+'/posts/'+postDocumentId.postDocumentId).get()
+    
   }
 
 
   async getPosts(){
-    let array : any[] = [];
-  this.afs.collection('/applications/InternProject001/posts').get().subscribe(res => {
-    res.docs.forEach(doc => {
-      array.push(doc.data());
-      console.log(doc.data())
-    })
-  })
-  
-  return array;
+    
+  return await this.afs.collection('/applications/InternProject001/posts').get()
    
   }
 
   async deletePosts(postDocumentID:PostsDocument){
-    this.afs.doc('/applications/InternProject001/posts/'+postDocumentID.postDocumentId).delete().then(res =>{console.log('Gönderi silindi.')})
+    return await this.afs.doc('/applications/InternProject001/posts/'+postDocumentID.postDocumentId).delete()
   }
 }
