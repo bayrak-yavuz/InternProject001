@@ -30,7 +30,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#exampleModal" (click)="postview=i.data.htmlContent">Detay</button>
                 <button type="button" class="btn btn-success">
-                    <a [routerLink]="['/admin/yazilar/id']">Düzenle</a></button>
+                    <a [routerLink]="['/admin/yazilar/'+i.id]">Düzenle</a></button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                     data-bs-target="#deleteModal" (click)="ids=i.id ;backdropToggle()" >Sil</button>
             </td>
