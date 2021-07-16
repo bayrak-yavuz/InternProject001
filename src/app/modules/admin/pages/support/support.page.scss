@@ -3,23 +3,29 @@
     position: relative;  
     right: +20px;
 }
-
 .diger{
     float: right;
 
 }
-.ikon1{
-    font-size: 48px;
-    
+.ikon{
+    font-size: 60px;
+    // position:relative;
+    // margin-left: 28%;
+    // margin-top: 25%;
+    // padding-left: 50%;       
 }
 
-.ikon2{
-    font-size: 48px;
-    
-    
+
+
+.mhsb{
+    background-color: #a55eea;
 }
-.ikon3{
-    font-size: 48px;
-    
-    
+#muhasebe{
+    color:#4c1c54;
+}
+#teknik{
+    color: rgb(13, 35, 107);
+}
+#diger{
+    color:#d1d8e0;
 }
