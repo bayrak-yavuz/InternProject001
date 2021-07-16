@@ -7,17 +7,21 @@ import { CategoriesService } from '../../services/categories.service';
   styleUrls: ['./categories.page.scss']
 })
 export class CategoriesPage implements OnInit {
-  array: any[] = [];  
+  array: any[] = [];
+  backdropOn = false;
   constructor(private cs: CategoriesService) { }
 
   ngOnInit(): void {
     this.getCats();
   }
 
+  backdropToggle(){
+    this.backdropOn = !this.backdropOn;
+  }
   getCats() {
     this.cs.getCategories().then(res => {
       res.subscribe(s => {
-        s.docs.forEach(doc => { this.array.push({data: doc.data(), id: doc.id})})
+        s.docs.forEach(doc => { this.array.push({ data: doc.data(), id: doc.id }) })
         this.array = this.array.sort((a: any, b: any) => (a?.categoryName + b?.categoryName))
       })
     });
