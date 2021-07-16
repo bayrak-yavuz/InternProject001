@@ -9,8 +9,8 @@ import { PostsDocument } from 'src/app/models/posts-information.model';
 })
 export class PostsPage implements OnInit {
    post:any[]=[];
-   ids = PostsDocument ;
-  
+   ids :string="" ;
+
   constructor(private postservice: PostsService) { }
 
   ngOnInit(): void {
@@ -23,16 +23,16 @@ export class PostsPage implements OnInit {
   }
   getPostService(id: string){
     let a =new PostsDocument({_syncDate: 0,htmlContent:"",postIndex:0,postLang:"",postName:"",postUrl:""},id)
-    this.postservice.getPost(a); 
+    this.postservice.getPost(a);
     this.postservice.getPost(a).then(a=> {a.subscribe(b=> {b.id})})
   }
 
   postDelete(id: string){
     let a =new PostsDocument({_syncDate: 0,htmlContent:"",postIndex:0,postLang:"",postName:"",postUrl:""},id)
     this.postservice.deletePosts(a)
-    console.log(typeof(id))
+
     console.log(id)
   }
-  
-  
+
+
 }
