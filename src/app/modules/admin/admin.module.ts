@@ -12,9 +12,10 @@ import { PostsPage } from './pages/posts/posts.page';
 import { CategoriesPage } from './pages/categories/categories.page';
 import { PostEditPage } from './pages/post-edit/post-edit.page';
 import { CategoriesEditPage } from './pages/categories-edit/categories-edit.page';
+import { ChangePasswordPage } from './pages/change-password/change-password.page';
 
 @NgModule({
-  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage, CategoriesPage, PostEditPage, CategoriesEditPage],
+  declarations: [RootPage, DashboardPage, HeaderComponent, FooterComponent, NavigationComponent, BreadcrumbComponent, SplashScreenComponent, PostsPage, CategoriesPage, PostEditPage, CategoriesEditPage, ChangePasswordPage],
   imports: [
     CommonModule,
     AdminRoutingModule
