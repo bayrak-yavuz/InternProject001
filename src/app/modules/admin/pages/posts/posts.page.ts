@@ -10,6 +10,8 @@ import { PostsDocument } from 'src/app/models/posts-information.model';
 export class PostsPage implements OnInit {
    post:any[]=[];
    ids :string="" ;
+   postview: string="";
+   backdropOn = false;
 
   constructor(private postservice: PostsService) { }
 
@@ -17,6 +19,11 @@ export class PostsPage implements OnInit {
     this.postService()
     this.getPostService("vwTMYzQ3zjSYuvJQ7EvT")
   }
+  backdropToggle(){
+    this.backdropOn = !this.backdropOn;
+  }
+
+
   postService(){
    this.postservice.getPosts().then(res=> {res.subscribe(res1=> { res1.forEach(doc=> {this.post.push({data:doc.data(), id: doc.id})})})})
    console.log(this.post)

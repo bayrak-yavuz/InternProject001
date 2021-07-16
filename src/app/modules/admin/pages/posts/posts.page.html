@@ -1,3 +1,9 @@
+<div *ngIf="backdropOn"
+    style="width: 100%; height: 100%; background-color: black; opacity: 0.5; position: absolute; left: 0; top: 0;" (click)="backdropToggle()" >
+</div>
+
+
+
 <table class="table table-hover table-striped text-center">
     <thead>
         <tr>
@@ -8,9 +14,9 @@
         </tr>
     </thead>
     <tbody>
-       
+
         <tr *ngFor="let i of post;index as j">
-            
+
             <td>
                 {{j+1}}
             </td>
@@ -22,13 +28,13 @@
             </td>
             <td>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Detay</button>
+                    data-bs-target="#exampleModal" (click)="postview=i.data.htmlContent">Detay</button>
                 <button type="button" class="btn btn-success">
                     <a [routerLink]="['/admin/yazilar/id']">Düzenle</a></button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#deleteModal" (click)="ids=i.id">Sil</button>
+                    data-bs-target="#deleteModal" (click)="ids=i.id ;backdropToggle()" >Sil</button>
             </td>
-            
+
         </tr>
 
 
@@ -40,11 +46,11 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Detaylar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
+                {{postview}}
             </div>
         </div>
     </div>
@@ -60,8 +66,8 @@
                 Postu silmek istediğinize emin misiniz?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="postDelete(ids)">Sil</button>
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Hayır</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="postDelete(ids);backdropToggle()">Sil</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="backdropToggle()" >Hayır</button>
             </div>
         </div>
 
