@@ -1,7 +1,7 @@
 <table class="table table-hover table-striped text-center">
     <thead>
         <tr>
-            <th scope="col">ID</th>
+            <th scope="col">#</th>
             <th scope="col">Post İsmi</th>
             <th scope="col">Post Url</th>
             <th scope="col">İşlemler</th>
@@ -10,14 +10,15 @@
     <tbody>
        
         <tr *ngFor="let i of post;index as j">
+            
             <td>
-                {{j}}
+                {{j+1}}
             </td>
             <td>
-                {{i.postName}}
+                {{i.data.postName}}
             </td>
             <td>
-                {{i.postUrl}}
+                {{i.data.postUrl}}
             </td>
             <td>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -25,7 +26,7 @@
                 <button type="button" class="btn btn-success">
                     <a [routerLink]="['/admin/yazilar/id']">Düzenle</a></button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#deleteModal">Sil</button>
+                    data-bs-target="#deleteModal" (click)="ids=i.id">Sil</button>
             </td>
             
         </tr>
@@ -59,7 +60,7 @@
                 Postu silmek istediğinize emin misiniz?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Sil</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="postDelete(ids)">Sil</button>
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Hayır</button>
             </div>
         </div>
