@@ -73,18 +73,8 @@ export class CategoriesService {
   }
 
 
-  async getCategories() {
-    let array: any[] = [];
-    return await this.afs.collection('/applications/InternProject001/categories').get().subscribe(res => {
-      res.docs.forEach(doc => {
-        array.push(doc.data());
-        console.log(doc.data())
-      })
-
-    })
-
-    return array;
-
+  async getCategories() {    
+    return await this.afs.collection('/applications/InternProject001/categories').get()
   }
 
   async deleteCategory(categoryDocumentID: CategoriesDocument) {
