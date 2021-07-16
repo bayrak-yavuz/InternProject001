@@ -11,9 +11,9 @@ const routes: Routes = [
   {path: '', component: RootPage, children: [
     {path: '', component: DashboardPage},
     {path: 'yazilar', component: PostsPage},
+    {path: 'yazilar/:id', component: PostEditPage},
     {path: 'kategoriler', component: CategoriesPage},
-    {path: 'yazi-duzenle', component: PostEditPage},
-    {path: 'kategori-duzenle', component: CategoriesEditPage}
+    {path: 'kategoriler/:id', component: CategoriesEditPage}
   ]}
 ];
 
