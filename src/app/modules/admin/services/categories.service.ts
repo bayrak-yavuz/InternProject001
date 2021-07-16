@@ -54,14 +54,14 @@ export class CategoriesService {
 
   async createCategory(data: CategoriesInformation) {
 
-    return await this.afs.collection('/applications/InternProject001/categories').add(data).then(res => { console.log(res.id) })
+    return await this.afs.collection('/applications/InternProject001/categories').add(data)
 
   }
 
 
   async Update(data: CategoriesDocument) {
 
-    return await this.afs.doc('/applications/InternProject001/categories/' + data.categoryDocumentId).update(data.categoryInformation).then(value => { console.log('Başarılı giriş', value) })
+    return await this.afs.doc('/applications/InternProject001/categories/' + data.categoryDocumentId).update(data.categoryInformation)
       .catch(console.error)
 
   }
@@ -89,7 +89,7 @@ export class CategoriesService {
 
   async deleteCategory(categoryDocumentID: CategoriesDocument) {
 
-    return await this.afs.doc('/applications/InternProject001/categories/' + categoryDocumentID.categoryDocumentId).delete().then(res => { console.log('Kategori silindi.') })
+    return await this.afs.doc('/applications/InternProject001/categories/' + categoryDocumentID.categoryDocumentId).delete()
   }
 }
 
