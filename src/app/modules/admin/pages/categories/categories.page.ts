@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'admin-categories',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.page.scss']
 })
 export class CategoriesPage implements OnInit {
-
-  constructor() { }
+  array: any[] = [];
+  backdropOn = false;
+  constructor(private cs: CategoriesService) { }
 
   ngOnInit(): void {
+    this.getCats();
+  }
+
+  backdropToggle(){
+    this.backdropOn = !this.backdropOn;
+  }
+  getCats() {
+    this.cs.getCategories().then(res => {
+      res.subscribe(s => {
+        s.docs.forEach(doc => { this.array.push({ data: doc.data(), id: doc.id }) })
+        this.array = this.array.sort((a: any, b: any) => (a?.categoryName + b?.categoryName))
+      })
+    });
   }
 
 }
