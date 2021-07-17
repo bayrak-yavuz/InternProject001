@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { CommonModule, NgStyle ,NgClass} from '@angular/common';
 
 
 
@@ -15,6 +16,9 @@ export class ChangePasswordPage implements OnInit {
   passwordAgain: any;
   email: any;
 
+  hatali = false;
+
+
   constructor(
     private angAuth: AngularFireAuth,
     
@@ -28,12 +32,16 @@ export class ChangePasswordPage implements OnInit {
 
   
 passwordCheck(password: string , passwordAgain: string){
+  
   if(this.newPassword != this.passwordAgain){
+    this.hatali = true;
     console.log('Hatalı deneme!');
   }
   else{
     console.log('Sıkıntı yok')
+    this.hatali = false;
     this.angAuth.sendPasswordResetEmail(this.email).then(res => console.log('email yollandı'))
   }
+
 }
 }
