@@ -69,7 +69,7 @@ export class CategoriesService {
 
   async getCategory(categoryDocument: CategoriesDocument) {
 
-    return await this.afs.doc('/applications/InternProject001/categories/' + categoryDocument.categoryDocumentId).get().subscribe((res: any) => { categoryDocument.categoryInformation = res.data(); console.log(res.data()) })
+    return await this.afs.doc('/applications/InternProject001/categories/' + categoryDocument.categoryDocumentId).get();
   }
 
 

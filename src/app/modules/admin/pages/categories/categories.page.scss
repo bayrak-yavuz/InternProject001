@@ -1,8 +1,12 @@
 .modal{
-    position: absolute;
+    position: fixed;
     z-index: 99999 !important;
 }
 
 .btn {
     margin-right: 2px;
+}
+
+.modal-backdrop {
+    opacity: 0 !important;
 }

@@ -1,5 +1,5 @@
 <div *ngIf="backdropOn"
-    style="width: 100%; height: 100%; background-color: black; opacity: 0.5; position: absolute; left: 0; top: 0;">
+    style="width: 100%; height: 100%; background-color: black; opacity: 0.5; position: fixed; left: 0; top: 0;">
 </div>
 
 <table class="table table-hover table-striped text-center">
@@ -23,13 +23,13 @@
             <td>{{i.data.categoryName}}</td>
             <td>{{i.data._syncDate}}</td>
             <td>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#editModal">Detay</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+                    (click)="delId=i.id; detCat=i.data.url">Detay</button>
                 <button class="btn btn-success">
-                    <a [routerLink]="['/admin/kategoriler/'+i.id]">Duzenle</a>
+                    <a [routerLink]="['/admin/kategoriler/'+i.id]">Düzenle</a>
                 </button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                    (click)="backdropToggle()">Sil</button>
+                <button type="button" class="btn btn-danger" data-backdrop="false" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal" (click)="backdropToggle();delId=i.id">Sil</button>
             </td>
         </tr>
     </tbody>
@@ -43,7 +43,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                detay1
+                <h6>{{detCat}}</h6>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -53,18 +53,21 @@
     </div>
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" data-bs-backdrop="false" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModalLabel">Sil</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="backdropToggle()"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="backdropToggle()"></button>
             </div>
             <div class="modal-body">
                 Veriler Silinsin mi?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="backdropToggle()">Sil</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="backdropToggle(); deleteCat()">Sil</button>
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal"
                     (click)="backdropToggle()">Hayır</button>
             </div>
