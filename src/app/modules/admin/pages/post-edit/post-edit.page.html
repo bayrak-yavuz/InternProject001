@@ -1,1 +1,44 @@
-<p>post-edit works!</p>
+<div class="container">
+    <div class="row">
+    <div class="col-8">
+        
+        <editor apiKey="bmzw79iqiik8kekwt7my908u2pu761xthhhe8bv5djwsn24k" [init]="editorInit">
+            [(ngModel)]="post"
+        </editor>
+
+    </div>
+    <div class="col-4">
+        <div class="row ">
+            <div class="col-12">
+                Post İsmi
+                <input class="form-control" type="text" placeholder="Post İsmi" value="Fs post name">
+            </div>
+        </div>
+        <div class="row editrow">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Dil</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>tr_TR</option>
+                        <option>en_EN</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row editrow">
+            <div class="col-12">
+                Tarih
+                <input class="form-control" type="text" placeholder={{date}} readonly>
+            </div>
+        </div>
+        <div class="row btnrow">
+            <div class="col-12">
+                <button class="btn btn-success" type="submit">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+

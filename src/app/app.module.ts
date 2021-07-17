@@ -11,12 +11,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AdminRegisterPage } from './pages/admin-register/admin-register.page';
 
+
 @NgModule({
   declarations: [
     AdminLoginPage,
     NotFoundPage,
     RootPage,
     AdminRegisterPage
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -24,7 +26,8 @@ import { AdminRegisterPage } from './pages/admin-register/admin-register.page';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+   
   ],
   providers: [],
   bootstrap: [RootPage]
