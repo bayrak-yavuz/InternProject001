@@ -22,6 +22,9 @@ export class PostsPage implements OnInit {
   backdropToggle(){
     this.backdropOn = !this.backdropOn;
   }
+  getArray(){
+    return this.post;
+  }
 
 
   postService(){

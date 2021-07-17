@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { isInteger, now } from 'lodash';
 import { PostsDocument } from 'src/app/models/posts-information.model';
 import { PostsService } from '../../services/posts.service';
+import { PostsPage } from '../posts/posts.page';
 @Component({
   selector: 'admin-post-edit',
   templateUrl: './post-edit.page.html',
@@ -23,7 +24,7 @@ export class PostEditPage implements OnInit {
       bullist numlist outdent indent | help'
   }
   date: Date = new Date(now());
-  post: string="";
+  
   constructor(private postservice: PostsService) { }
 
   ngOnInit(): void {
@@ -31,9 +32,9 @@ export class PostEditPage implements OnInit {
 
   updatePost(id : string){
     let a =new PostsDocument({_syncDate: Number.parseInt(this.date.toString()) ,htmlContent:"post",postIndex:0,postLang:"",postName:"",postUrl:""},id)
-    this.postservice.updatePosts(a)
-    
+    this.postservice.updatePosts(a)    
   }
 
+  
 
 }
