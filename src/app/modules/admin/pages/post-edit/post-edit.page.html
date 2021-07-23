@@ -1,26 +1,32 @@
-<div class="container">
+<div class="container" *ngFor="let i of postList">
     <div class="row">
     <div class="col-8">
-        
-        
-        <editor  apiKey="bmzw79iqiik8kekwt7my908u2pu761xthhhe8bv5djwsn24k" 
+
+
+        <editor
+        [(ngModel)]="i.data.htmlContent"
+        (ngModelChange)="postContent=$event"
+
+
+        apiKey="bmzw79iqiik8kekwt7my908u2pu761xthhhe8bv5djwsn24k"
         [init]="editorInit">
-           
+
+
         </editor>
 
     </div>
-    <div class="col-4">
+    <div class="col-4"  >
         <div class="row ">
             <div class="col-12">
                 Post İsmi
-                <input class="form-control" type="text" placeholder="Post İsmi" value="Fs post name">
+                <input class="form-control" type="text" placeholder="Post İsmi"  [(ngModel)]="i.data.postName" (ngModelChange)="postNameEdit=$event">
             </div>
         </div>
         <div class="row editrow">
             <div class="col-12">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Dil</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="i.data.postLang" (ngModelChange)="postLan=$event" >
                         <option>tr_TR</option>
                         <option>en_EN</option>
 
@@ -36,7 +42,7 @@
         </div>
         <div class="row btnrow">
             <div class="col-12">
-                <button class="btn btn-success" type="submit">Kaydet</button>
+                <button class="btn btn-success" type="submit" (click)="updatePost()" >Kaydet</button>
             </div>
         </div>
     </div>

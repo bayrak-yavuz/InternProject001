@@ -9,7 +9,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Post İsmi</th>
-            <th scope="col">Post Url</th>
+            <th scope="col">Post Language</th>
             <th scope="col">İşlemler</th>
         </tr>
     </thead>
@@ -24,7 +24,7 @@
                 {{i.data.postName}}
             </td>
             <td>
-                {{i.data.postUrl}}
+                {{i.data.postLang}}
             </td>
             <td>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -60,7 +60,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModal">Uyarı !</h5>
-
             </div>
             <div class="modal-body">
                 Postu silmek istediğinize emin misiniz?
@@ -70,6 +69,5 @@
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="backdropToggle()" >Hayır</button>
             </div>
         </div>
-
     </div>
 </div>

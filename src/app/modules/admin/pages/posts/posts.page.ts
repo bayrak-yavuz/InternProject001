@@ -17,7 +17,7 @@ export class PostsPage implements OnInit {
 
   ngOnInit(): void {
     this.postService()
-    this.getPostService("vwTMYzQ3zjSYuvJQ7EvT")
+
   }
   backdropToggle(){
     this.backdropOn = !this.backdropOn;
@@ -33,14 +33,12 @@ export class PostsPage implements OnInit {
   }
   getPostService(id: string){
     let a =new PostsDocument({_syncDate: 0,htmlContent:"",postIndex:0,postLang:"",postName:"",postUrl:""},id)
-    this.postservice.getPost(a);
     this.postservice.getPost(a).then(a=> {a.subscribe(b=> {b.id})})
   }
 
   postDelete(id: string){
     let a =new PostsDocument({_syncDate: 0,htmlContent:"",postIndex:0,postLang:"",postName:"",postUrl:""},id)
     this.postservice.deletePosts(a)
-
     console.log(id)
   }
 
