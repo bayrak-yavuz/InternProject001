@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { browser } from 'protractor';
 import { CategoriesDocument } from 'src/app/models/categories-information.model';
 import { CategoriesService } from '../../services/categories.service';
 
@@ -20,14 +21,17 @@ export class CategoriesPage implements OnInit {
     this.getCats();
   }
 
-  detailCat(){
-    let detC = new CategoriesDocument({ categoryName: "", lang: "", url: "", _syncDate: 0, isListed: false}, this.delId);
-    this.cs.getCategory(detC).then(t => {t.subscribe(s => {this.detCat.push(s.data())})});
+  detailCat(id: string) {
+    this.detCat = []
+    let detC = new CategoriesDocument({}, id);
+    this.cs.getCategory(detC).then(res => { res.subscribe(s => this.detCat.push(s.data())) });    
   }
 
   deleteCat() {
-    let dc = new CategoriesDocument({ categoryName: "", lang: "", url: "", _syncDate: 0, isListed: false }, this.delId);
+    let dc = new CategoriesDocument({}, this.delId);
     this.cs.deleteCategory(dc).then(t => alert("Silindi!")).catch(e => alert("Silme İşleminde Hata:\n" + e));
+    this.array = [];
+    this.getCats();
   }
 
   getCats() {
